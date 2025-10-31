@@ -12,7 +12,7 @@ else:
     global_sum = None
 # Reduce: Menjumlahkan semua local_value, hasilnya di global_sum (Rank 0)
 comm.Reduce([local_value, MPI.FLOAT], [global_sum, MPI.FLOAT], 
-            op=MPI.SUM, root=0)
+            op=MPI.PROD, root=0)
 if rank == 0:
     # Jika size = 4, maka Sum = 1 + 2 + 3 + 4 = 10.0
     print(f"Rank {rank}: Total jumlah global adalah: {global_sum[0]}")
